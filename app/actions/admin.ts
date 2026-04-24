@@ -1,7 +1,39 @@
 'use server';
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { Compra, Profile, Producto, Cliente } from '@/lib/supabase/types';
+
+// ... (existing code)
+
+export async function getUsuarios() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) return [];
+  return data || [];
+}
+
+export async function actualizarUsuario(id: string, updates: { nombre: string, role: 'trabajador' | 'administrador' }) {
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from('profiles')
+    .update(updates)
+    .eq('id', id);
+
+  return { success: !error, error };
+}
+
+export async function resetearPassword(id: string, newPassword: string) {
+  const adminClient = await createAdminClient();
+  const { error } = await adminClient.auth.admin.updateUserById(id, {
+    password: newPassword
+  });
+
+  return { success: !error, error };
+}
 
 export async function getAdminDashboardData() {
   const supabase = await createClient();

@@ -100,10 +100,10 @@ export default function RegistrarCompraSheet({ productos }: Props) {
               <label className="label">Cantidad (kg)</label>
               <input
                 type="number"
-                step="0.5"
+                step="0.001"
                 min="0"
                 className="input"
-                placeholder="0.00"
+                placeholder="0.000"
                 value={formData.cantidad_kg}
                 onChange={(e) => setFormData({ ...formData, cantidad_kg: e.target.value })}
                 required

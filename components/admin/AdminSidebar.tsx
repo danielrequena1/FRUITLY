@@ -19,6 +19,7 @@ export default function AdminSidebar() {
     { name: 'Panel de control', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Compras', href: '/admin/compras', icon: ShoppingCart },
     { name: 'Clientes', href: '/admin/clientes', icon: Users },
+    { name: 'Usuarios', href: '/admin/usuarios', icon: Shield },
     { name: 'Facturas', href: '/admin/facturas', icon: FileText },
     { name: 'Productos', href: '/admin/productos', icon: Package },
     { name: 'Fiscal', href: '/admin/fiscal', icon: Calculator },
