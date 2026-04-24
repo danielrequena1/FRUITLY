@@ -14,8 +14,8 @@ export default async function UsuariosPage() {
       </div>
 
       {/* Lista de Usuarios */}
-      <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden">
-        <table className="w-full text-left">
+      <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden overflow-x-auto">
+        <table className="w-full text-left min-w-[700px]">
           <thead className="bg-neutral-50 border-b border-neutral-100">
             <tr>
               <th className="px-8 py-5 text-xs font-bold text-neutral-400 uppercase tracking-widest">Usuario</th>

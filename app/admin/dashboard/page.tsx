@@ -60,8 +60,8 @@ export default async function AdminDashboard() {
           <button className="text-sm font-bold text-drc-light hover:underline">Ver todas</button>
         </div>
 
-        <div className="card p-0 overflow-hidden border-neutral-100 shadow-sm bg-white">
-          <table className="w-full text-left text-sm">
+        <div className="card p-0 overflow-hidden border-neutral-100 shadow-sm bg-white overflow-x-auto">
+          <table className="w-full text-left text-sm min-w-[600px]">
             <thead className="bg-neutral-50 border-b border-neutral-100">
               <tr>
                 <th className="px-6 py-4 font-bold text-neutral-400 uppercase tracking-wider">Trabajador</th>

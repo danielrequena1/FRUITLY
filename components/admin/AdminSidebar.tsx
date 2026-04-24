@@ -8,11 +8,13 @@ import {
   Users, 
   FileText, 
   Package,
-  Calculator
+  Calculator,
+  Shield,
+  X
 } from 'lucide-react';
 import LogoutButton from '@/components/LogoutButton';
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
 
   const menuItems = [
@@ -26,11 +28,18 @@ export default function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-[240px] h-screen bg-white border-r border-neutral-200 fixed left-0 top-0 flex flex-col z-50">
+    <aside className="w-[280px] lg:w-[240px] h-screen bg-white border-r border-neutral-200 flex flex-col">
       {/* Branding */}
-      <div className="p-8 pb-10">
-        <h1 className="text-2xl font-heading text-drc-deep leading-none">Fruitly</h1>
-        <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mt-1">by Soluciones DRC</p>
+      <div className="p-8 pb-10 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-heading text-drc-deep leading-none">Fruitly</h1>
+          <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mt-1">by Soluciones DRC</p>
+        </div>
+        {onClose && (
+          <button onClick={onClose} className="lg:hidden p-2 text-neutral-400">
+            <X size={20} />
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -42,6 +51,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={`flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-all border-l-2 ${
                 isActive 
                   ? 'bg-accent-light text-accent-dark border-accent' 
