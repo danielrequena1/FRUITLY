@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Shield, Key, Edit2, Loader2, Save, X } from 'lucide-react';
+import { User, Shield, Key, Edit2, Loader2, Save, X, Circle } from 'lucide-react';
 import { actualizarUsuario, resetearPassword } from '@/app/actions/admin';
 import { useRouter } from 'next/navigation';
 
@@ -11,12 +11,13 @@ export default function GestionUsuarioRow({ usuario }: { usuario: any }) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState(usuario.nombre);
   const [role, setRole] = useState(usuario.role);
+  const [activo, setActivo] = useState(usuario.activo ?? true);
   const [newPassword, setNewPassword] = useState('');
   const router = useRouter();
 
   const handleUpdate = async () => {
     setLoading(true);
-    const res = await actualizarUsuario(usuario.id, { nombre, role });
+    const res = await actualizarUsuario(usuario.id, { nombre, role, activo });
     if (res.success) {
       setIsEditing(false);
       router.refresh();
