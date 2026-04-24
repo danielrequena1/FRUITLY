@@ -2,27 +2,31 @@
 
 import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { Compra, Profile, Producto, Cliente } from '@/lib/supabase/types';
-
-// ... (existing code)
+import { revalidatePath } from 'next/cache';
 
 export async function getUsuarios() {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
     .order('created_at', { ascending: false });
 
-  if (error) return [];
+  if (error) {
+    console.error('Error fetching users:', error);
+    return [];
+  }
+  console.log('Usuarios fetched:', data?.length);
   return data || [];
 }
 
 export async function actualizarUsuario(id: string, updates: { nombre: string, role: 'trabajador' | 'administrador', activo: boolean }) {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
   const { error } = await supabase
     .from('profiles')
     .update(updates)
     .eq('id', id);
 
+  if (!error) revalidatePath('/admin/usuarios');
   return { success: !error, error };
 }
 

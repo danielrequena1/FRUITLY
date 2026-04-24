@@ -2,6 +2,8 @@ import { getUsuarios } from '@/app/actions/admin';
 import { User, Shield, UserCog, Key, Edit2 } from 'lucide-react';
 import GestionUsuarioRow from '@/components/admin/GestionUsuarioRow';
 
+export const dynamic = 'force-dynamic';
+
 export default async function UsuariosPage() {
   const usuarios = await getUsuarios();
 
