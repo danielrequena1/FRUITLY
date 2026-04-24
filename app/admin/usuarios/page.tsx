@@ -20,6 +20,7 @@ export default async function UsuariosPage() {
             <tr>
               <th className="px-8 py-5 text-xs font-bold text-neutral-400 uppercase tracking-widest">Usuario</th>
               <th className="px-8 py-5 text-xs font-bold text-neutral-400 uppercase tracking-widest">Rol / Acceso</th>
+              <th className="px-8 py-5 text-xs font-bold text-neutral-400 uppercase tracking-widest">Estado</th>
               <th className="px-8 py-5 text-xs font-bold text-neutral-400 uppercase tracking-widest text-right">Acciones</th>
             </tr>
           </thead>

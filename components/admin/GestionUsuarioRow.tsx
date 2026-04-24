@@ -81,6 +81,24 @@ export default function GestionUsuarioRow({ usuario }: { usuario: any }) {
           </div>
         )}
       </td>
+      <td className="px-8 py-6">
+        {isEditing ? (
+          <div className="flex items-center gap-2">
+            <input 
+              type="checkbox" 
+              checked={activo} 
+              onChange={(e) => setActivo(e.target.checked)}
+              className="w-4 h-4 text-accent rounded border-neutral-300"
+            />
+            <span className="text-sm font-medium text-neutral-700">Activo</span>
+          </div>
+        ) : (
+          <div className={`inline-flex items-center gap-1.5 font-bold text-[10px] uppercase tracking-wider ${usuario.activo ? 'text-success' : 'text-neutral-400'}`}>
+            <Circle size={8} fill="currentColor" />
+            {usuario.activo ? 'Activo' : 'Inactivo'}
+          </div>
+        )}
+      </td>
       <td className="px-8 py-6 text-right">
         <div className="flex justify-end gap-2">
           {isEditing ? (

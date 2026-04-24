@@ -16,6 +16,7 @@ create table public.profiles (
   nombre      text not null,
   email       text not null,
   role        text not null check (role in ('trabajador', 'administrador')),
+  activo      boolean default true,
   created_at  timestamptz default now()
 );
 

@@ -16,7 +16,7 @@ export async function getUsuarios() {
   return data || [];
 }
 
-export async function actualizarUsuario(id: string, updates: { nombre: string, role: 'trabajador' | 'administrador' }) {
+export async function actualizarUsuario(id: string, updates: { nombre: string, role: 'trabajador' | 'administrador', activo: boolean }) {
   const supabase = await createClient();
   const { error } = await supabase
     .from('profiles')
